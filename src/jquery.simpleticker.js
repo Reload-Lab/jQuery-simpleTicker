@@ -1,6 +1,6 @@
 /***
  * Name: jQuery simpleticker plugin
- * Vesion: 1.0.1
+ * Vesion: 1.1.0
  * Author: Domenico Gigante
  * Repository: https://github.com/Reload-Lab/jQuery-simpleTicker
  ***/
@@ -89,127 +89,237 @@
 			/*** window onresize ***/
 			window.addEventListener('resize', function(){
 				
-				// update some variables
-				if(settings.forward){
-					
-					t0 = -w; // initial translation
-					t1 = 0; // final translation
-				} else{
-					
-					W = settings.direction == 'vertical'? $(el).height(): $(el).width(); // container width/height
-					
-					t0 = -(w - W); // initial translation
-					t1 = -(2 * w - W); // final translation
-				}
+				resize();
 			});
 			
 			/*** init setup ***/
-			// ticker container must be flex
-			$(el).css({
-				'display': 'flex'
-			});
-			
-			// if forward
-			if(settings.forward){
-				
-				if(settings.direction == 'vertical'){
+			(function init(){
 					
-					// ticker container must be flex column
-					$(el).css({
-						'flex-direction': 'column',
-					});
-			
-					// ticker height
-					// wrapper must be flex column
-					w = $(el).find(settings.wrapper)
-						.css({
-							'display': 'flex',
-							'flex-direction': 'column',
-							'flex-wrap': 'nowrap',
-							'white-space': 'wrap'
-						})
-						.height();
-				} else{
+				// ticker container must be flex
+				$(el).css({
+					'display': 'flex'
+				});
+				
+				// if forward
+				if(settings.forward){
 					
-					// ticker width
-					// wrapper must be flex row
-					w = $(el).find(settings.wrapper)
-						.css({
-							'display': 'flex',
-							'flex-direction': 'row',
-							'flex-wrap': 'nowrap',
-							'white-space': 'nowrap'
-						})
-						.width();
-				}
-				
-				t0 = -w; // initial translation
-				t1 = 0; // final translation
-				
-				// set actual position
-				curPos = t0;
-				
-				// clone child nodes and prepend to child wrapper
-				$(el).find(settings.wrapper)
-					.each(function(index, elem){
+					if(settings.direction == 'vertical'){
 						
-						$($(elem).find($(settings.nodes).get().reverse()))
-							.each(function(){
+						// ticker container must be flex column
+						$(el).css({
+							'flex-direction': 'column',
+						});
+				
+						// ticker height
+						// wrapper must be flex column
+						w = $(el).find(settings.wrapper)
+							.css({
+								'display': 'flex',
+								'flex-direction': 'column',
+								'flex-wrap': 'nowrap',
+								'white-space': 'wrap'
+							})
+							.height();
+					} else{
+						
+						// ticker width
+						// wrapper must be flex row
+						w = $(el).find(settings.wrapper)
+							.css({
+								'display': 'flex',
+								'flex-direction': 'row',
+								'flex-wrap': 'nowrap',
+								'white-space': 'nowrap'
+							})
+							.width();
+					}
+					
+					// clone child nodes and prepend to child wrapper
+					$(el).find(settings.wrapper)
+						.each(function(index, elem){
 							
-								$(this).clone()
-									.prependTo(elem);
-							});
-					});
-			} else{
-				
-				if(settings.direction == 'vertical'){
+							$($(elem).find($(settings.nodes).get().reverse()))
+								.each(function(){
+								
+									$(this).clone()
+										.addClass('cloned')
+										.prependTo(elem);
+								});
+						});
 					
-					// ticker container must be flex column
-					$(el).css({
-						'flex-direction': 'column',
-					});
-			
-					// ticker height
-					// wrapper must be flex column
-					w = $(el).find(settings.wrapper)
-						.css({
-							'display': 'flex',
-							'flex-direction': 'column',
-							'flex-wrap': 'nowrap',
-							'white-space': 'wrap'
-						})
-						.height();
+					if(w < W){
+						
+						t0 = -w; // initial translation
+						t1 = W; // final translation
+					
+						// set actual position
+						curPos = t0
+						
+						// hide cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
+								
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', 'none');
+									});
+							});
+					} else{
+						
+						t0 = -w; // initial translation
+						t1 = 0; // final translation
+						
+						// set actual position
+						curPos = t0;
+					}
 				} else{
 					
-					// ticker width
-					// wrapper must be flex row
-					w = $(el).find(settings.wrapper)
-						.css({
-							'display': 'flex',
-							'flex-direction': 'row',
-							'flex-wrap': 'nowrap',
-							'white-space': 'nowrap'
-						})
-						.width();
-				}
-				
-				t0 = -(w - W); // initial translation
-				t1 = -(2 * w - W); // final translation
-		  	
-				// set actual position
-				curPos = t0
-				
-				// clone child nodes and append to child wrapper
-				$(el).find(settings.wrapper)
-					.each(function(index, elem){
+					if(settings.direction == 'vertical'){
 						
-						$(elem).find(settings.nodes)
-							.each(function(){
+						// ticker container must be flex column
+						$(el).css({
+							'flex-direction': 'column',
+						});
+				
+						// ticker height
+						// wrapper must be flex column
+						w = $(el).find(settings.wrapper)
+							.css({
+								'display': 'flex',
+								'flex-direction': 'column',
+								'flex-wrap': 'nowrap',
+								'white-space': 'wrap'
+							})
+							.height();
+					} else{
+						
+						// ticker width
+						// wrapper must be flex row
+						w = $(el).find(settings.wrapper)
+							.css({
+								'display': 'flex',
+								'flex-direction': 'row',
+								'flex-wrap': 'nowrap',
+								'white-space': 'nowrap'
+							})
+							.width();
+					}
+					
+					// clone child nodes and append to child wrapper
+					$(el).find(settings.wrapper)
+						.each(function(index, elem){
+							
+							$(elem).find(settings.nodes)
+								.each(function(){
+									
+									$(this).clone()
+										.addClass('cloned')
+										.appendTo(elem);
+								});
+						});
+					
+					if(w < W){
+						
+						t0 = W; // initial translation
+						t1 = -w; // final translation
+					
+						// set actual position
+						curPos = t0
+						
+						// hide cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
 								
-								$(this).clone()
-									.appendTo(elem);
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', 'none');
+									});
 							});
-					});
+					} else{
+					
+						t0 = -(w - W); // initial translation
+						t1 = -(2 * w - W); // final translation
+					
+						// set actual position
+						curPos = t0
+					}
+				}
+			})();
+			
+			function resize(){
+				
+				W = settings.direction == 'vertical'? $(el).height(): $(el).width(); // container width/height
+				
+				// update some variables
+				if(settings.forward){
+					
+					if(w < W){
+						
+						t0 = -w; // initial translation
+						t1 = W; // final translation
+						
+						// hide cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
+								
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', 'none');
+									});
+							});
+					} else{
+						
+						t0 = -w; // initial translation
+						t1 = 0; // final translation
+						
+						// show cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
+								
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', "");
+									});
+							});
+					}
+				} else{
+					
+					if(w < W){
+						
+						t0 = W; // initial translation
+						t1 = -w; // final translation
+						
+						// hide cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
+								
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', 'none');
+									});
+							});
+					} else{
+						
+						t0 = -(w - W); // initial translation
+						t1 = -(2 * w - W); // final translation
+						
+						// show cloned nodes
+						$(el).find(settings.wrapper)
+							.each(function(index, elem){
+								
+								$(elem).find(settings.nodes + '.cloned')
+									.each(function(){
+										
+										$(this).css('display', "");
+									});
+							});
+					}
+				}
 			}
 			
 			/*** move ticker by step ***/
