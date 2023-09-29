@@ -1,9 +1,14 @@
-/***
- * Name: jQuery simpleticker plugin
- * Vesion: 1.1.0
- * Author: Domenico Gigante
- * Repository: https://github.com/Reload-Lab/jQuery-simpleTicker
- ***/
+/*!
+ * jQuery simpleTicker Plugin
+ * https://github.com/Reload-Lab/jQuery-simpleTicker
+ *
+ * @updated September 29, 2023
+ * @version 1.0.0
+ *
+ * @author Domenico Gigante <domenico.gigante@reloadlab.it>
+ * @copyright (c) 2023 Reload Laboratorio Multimediale <info@reloadlab.it> (https://www.reloadlab.it)
+ * @license MIT
+ */
 
 (function($){
 	

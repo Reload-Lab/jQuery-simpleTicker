@@ -1,0 +1,28 @@
+{
+  "name": "Reload-Lab/jQuery-simpleTicker",
+  "description": "Simple news ticker based on Scott Alguire jQuery grouploop plugins",
+  "main": "dist/jquery.simpleticker.js",
+  "authors": [
+    "Reload - Laboratorio Multimediale <info@reloadlab.it> (https://www.reloadlab.it)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "jquery",
+    "ticker"
+  ],
+  "homepage": "https://github.com/Reload-Lab/jQuery-simpleTicker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reload-Lab/jQuery-simpleTicker.git"
+  },
+  "dependencies": {
+    "jquery": "^3.7.0"
+  }
+}

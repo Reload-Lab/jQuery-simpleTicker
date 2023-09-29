@@ -1,0 +1,84 @@
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIMPLE TICKER</title>
+
+<!-- meta tags -->
+<meta name="description" content="SIMPLE TICKER">
+<meta name="keywords" content="">
+<meta name="robots" content="noindex,nofollow">
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+<!-- stylesheets -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+  <div class="container">
+    <div class="bg-header d-flex justify-content-start align-items-md-center flex-column flex-md-row align-items-sm-start">
+      <div class="logo"></div>
+      <h1 class="titolo">SIMPLE TIKER</h1>
+    </div>
+  </div>
+</header>
+
+<!-- main -->
+<section class="main">
+  <div class="container pt-1">
+    <div id="news-example" class="my-5 px-3 py-2">
+      <div id="ticker-example" data-st-velocity="1" data-st-forward="0" data-st-wrapper=".item-wrap" data-st-nodes=".item" data-st-pause="1">
+        <div class="item-wrap"> 
+          
+          <!--/-->
+          <div class="item"><a href="https://www.flcgil.it/attualita/alla-ricerca-del-voto-e-non-solo-in-condotta.flc" target="_blank">Alla ricerca del voto (e non solo in condotta)</a></div>
+          <div class="item"><a href="https://www.flcgil.it/scuola/dirigenti/ccnl-area-istruzione-e-ricerca-2019-2021-il-ministero-comunica-le-tematiche-che-inserira-nell-atto-di-indirizzo.flc" target="_blank">CCNL area Istruzione e Ricerca 2019/2021. Il ministero comunica le tematiche che inserirà nell'atto di indirizzo</a></div>
+          <div class="item"><a href="https://www.flcgil.it/attualita/piano-nazionale-ripresa-resilienza/pnrr-e-scuola-4-0-prorogata-al-30-novembre-2023-la-scadenza-per-gli-affidamenti.flc" target="_blank">PNRR e Scuola 4.0: prorogata al 30 novembre 2023 la scadenza per gli affidamenti</a></div>
+          <div class="item"><a href="https://www.flcgil.it/attualita/una-unica-unita-e-italia-fermare-progetto-autonomia-differenziata-rischi-scuola-video.flc" target="_blank">"UNA, UNICA, UNITA è l'ITALIA": fermare il progetto di autonomia differenziata. I rischi per la scuola [VIDEO]</a></div>
+          <div class="item"><a href="https://www.flcgil.it/attualita/emergenza-coronavirus-notizie-provvedimenti.flc" target="_blank">Emergenza Coronavirus COVID-19: notizie e provvedimenti</a></div>
+          <div class="item"><a href="https://www.flcgil.it/scuola/dichiarazione-servizi-e-domanda-ricostruzione-carriera-chi-deve-farla-quando-e-come.flc" target="_blank">Dichiarazione dei servizi e domanda di ricostruzione della carriera: chi deve farla, quando e come</a></div>
+          <div class="item"><a href="https://www.flcgil.it/ricerca/infn-si-aprono-le-trattative-per-i-ccni-2021-2022-ed-uno-spiraglio-per-rilanciare-il-processo-di-stabilizzazione-nell-ente.flc" target="_blank">INFN: si aprono le trattative per i CCNI 2021-2022 ed uno spiraglio per rilanciare il processo di stabilizzazione nell'ente</a></div>
+          <div class="item"><a href="https://www.flcgil.it/attualita/piano-nazionale-ripresa-resilienza/emergenza-coronavirus-covid-19-pnrr-notizie-provvedimenti.flc" target="_blank">PNRR: notizie e provvedimenti</a></div>
+          <div class="item"><a href="https://www.flcgil.it/scuola/reclutamento-dirigenti-tecnici-il-parere-del-cspi-sullo-schema-di-regolamento.flc" target="_blank">Reclutamento dirigenti tecnici: il parere del CSPI sullo schema di regolamento</a></div>
+          <div class="item"><a href="https://www.flcgil.it/universita/concorsi-universita-al-26-settembre-2023.flc" target="_blank">Concorsi Università al 26 settembre 2023</a></div>
+          
+          <!--/--> 
+        </div>
+      </div>
+    </div>
+    <div class="code_example">
+      <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	jQuery('#ticker-example').simpleticker(); 
+});
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<div class="footer">
+  <div class="container">
+    <div class="bg-footer">© 2023 Reload - Laboratorio multimediale. All rights reserved.</div>
+  </div>
+</div>
+
+<!-- scripts --> 
+<script src="../lib/jquery/dist/jquery.min.js"></script> 
+<script src="../dist/jquery.simpleticker.js"></script> 
+<script>
+$(document).ready(function(){
+	
+	jQuery('#ticker-example').simpleticker();
+});
+</script> 
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+</body>
+</html>
